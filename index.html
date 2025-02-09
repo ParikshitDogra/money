@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHERE'S MY MONEY?!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f8d7da;
+            color: #721c24;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+        }
+        .meme {
+            width: 60%;
+            max-width: 400px;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .pay-button {
+            background-color: red;
+            color: white;
+            padding: 15px;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>WHERE'S MY MONEY?! 🤨</h1>
+    <p>Bro... it has been <span id="days">0</span> days since you took my money.</p>
+    <p>My patience is decrease exponentially. 😭💔</p>
+    <img class="meme" src="https://pbs.twimg.com/media/FvXk60QWYAMkNao.jpg" width="300px" alt="Emotional Damage Meme">
+    <p class="countdown">Time left to pay before I call debt collectors: <span id="timer">24:00:00</span></p>
+    <details>
+        <summary>
+          <b><h1> members to return money</h1></b><br>
+
+        </summary>
+        <div style="text-decoration: underline;">
+        Gautam<br>
+        Rahamat <br>
+        Saransh <br>
+        Kaif <br>
+        Shahul <br>
+        <img src="" alt="">
+        </div>
+    </details>
+    <button class="pay-button" onclick="alert('Nice try. You can’t escape. PAY UP 72 rs! ')"> <a href="qrcode.html">CLICK TO PAY (No Escape)</a> </button>
+    
+    <script>
+        function updateTimer() {
+            let timeLeft = 24 * 60 * 60;
+            setInterval(() => {
+                let hours = String(Math.floor(timeLeft / 3600)).padStart(2, '0');
+                let minutes = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, '0');
+                let seconds = String(timeLeft % 60).padStart(2, '0');
+                document.getElementById('timer').innerText = `${hours}:${minutes}:${seconds}`;
+                if (timeLeft > 0) timeLeft--;
+            }, 1000);
+        }
+        
+        function updateDays() {
+            let startDate = new Date('2024-01-01');  // Change to when they borrowed money
+            let today = new Date();
+            let diffTime = Math.abs(today - startDate);
+            let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('days').innerText = diffDays;
+        }
+        
+        updateDays();
+        updateTimer();
+    </script>
+</body>
+</html>
